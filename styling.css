@@ -1,0 +1,7 @@
+@keyframes pulse-red {
+    0%, 100% { background-color: #ef4444; }
+    50% { background-color: #dc2626; }
+}
+.animate-pulse-red {
+    animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
