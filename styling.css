@@ -1,7 +1,11 @@
-@keyframes pulse-red {
-    0%, 100% { background-color: #ef4444; }
-    50% { background-color: #dc2626; }
+/* Custom subtle grid background for Hero */
+.bg-grid {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
-.animate-pulse-red {
-    animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+/* Glow effect for the live card */
+.glow-border {
+    box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.3);
 }
