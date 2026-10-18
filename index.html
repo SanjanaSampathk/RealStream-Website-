@@ -150,6 +150,82 @@
   .event-card{transition:.2s ease}
   .event-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.18)}
 
+  /* Public season schedule: editorial day rail + image-led stage lineup */
+  .public-schedule-wrap{position:relative}
+  .public-schedule-rail{display:flex;align-items:center;gap:.55rem;overflow-x:auto;scrollbar-width:none}
+  .public-schedule-rail::-webkit-scrollbar{display:none}
+  .public-day-board{display:grid;grid-template-columns:118px minmax(0,1fr);gap:clamp(16px,3vw,38px);padding:28px 0;border-top:1px solid var(--line-soft)}
+  .public-day-stamp{position:relative;align-self:stretch;display:flex;flex-direction:column;align-items:flex-start;padding-top:2px}
+  .public-day-stamp:after{content:'';position:absolute;left:10px;top:88px;bottom:0;width:1px;background:linear-gradient(to bottom,rgba(60,230,164,.45),rgba(60,230,164,0))}
+  .public-day-kicker{font:500 8px 'JetBrains Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:#83a096}
+  .public-day-number{font:600 52px/.86 'Space Grotesk',sans-serif;letter-spacing:-.09em;color:rgba(60,230,164,.56);margin:12px 0 10px}
+  .public-day-date{font:600 11px 'Space Grotesk',sans-serif;color:#eaf4ef}
+  .public-day-theme{font-size:9px;color:#71897f;margin-top:4px;line-height:1.45}
+  .public-day-marker{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font:500 8px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#7d978c}
+  .public-day-marker:before{content:'';width:7px;height:7px;border-radius:50%;background:#3ce6a4;box-shadow:0 0 0 4px rgba(60,230,164,.1)}
+  .public-day-content{min-width:0}
+  .public-day-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 12px}
+  .public-day-heading-label{font:500 8px 'JetBrains Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:#71897f}
+  .public-day-heading-count{font:500 8px 'JetBrains Mono',monospace;letter-spacing:.1em;color:#60786e}
+  .public-event-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .public-event-card{position:relative;display:flex;flex-direction:column;min-width:0;overflow:hidden;border:1px solid rgba(255,255,255,.09);border-radius:16px;background:linear-gradient(155deg,rgba(255,255,255,.035),rgba(255,255,255,.012));transition:transform .28s cubic-bezier(.2,.7,.2,1),border-color .22s,box-shadow .25s;animation:publicCardIn .42s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes publicCardIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .public-event-card:hover{transform:translateY(-3px);border-color:rgba(60,230,164,.35);box-shadow:0 22px 45px -35px rgba(60,230,164,.6)}
+  .public-event-card.is-featured{grid-column:1/-1;min-height:188px}
+  .public-event-media{position:relative;flex:0 0 auto;height:114px;overflow:hidden;background:#0a1210}
+  .public-event-image{width:100%;height:100%;object-fit:cover;opacity:.77;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .25s}
+  .public-event-card:hover .public-event-image{transform:scale(1.045);opacity:.9}
+  .public-event-shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,12,9,.77),rgba(4,12,9,.04) 72%)}
+  .public-event-type{position:absolute;left:11px;bottom:10px;font:600 8px 'JetBrains Mono',monospace;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.83)}
+  .public-event-status{position:absolute;left:10px;top:10px}
+  .public-event-stage{position:absolute;right:10px;top:10px;border:1px solid rgba(255,255,255,.17);border-radius:6px;background:rgba(4,10,8,.52);backdrop-filter:blur(8px);padding:4px 6px;font:500 7px 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(255,255,255,.82)}
+  .public-event-body{display:flex;flex-direction:column;flex:1;min-width:0;padding:12px 13px 11px}
+  .public-event-title{font:600 14px/1.2 'Space Grotesk',sans-serif;letter-spacing:-.025em;color:#eaf4ef}
+  .public-event-host{font-size:9.5px;color:#849a90;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:4px}
+  .public-event-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font:500 8px 'JetBrains Mono',monospace;color:#80958c;margin-top:9px}
+  .public-event-meta span{display:inline-flex;align-items:center;gap:4px}
+  .public-event-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:9px}
+  .public-event-link{display:inline-flex;align-items:center;gap:5px;color:#8fa69b;font-size:9.5px;font-weight:600;transition:color .18s}
+  .public-event-link:hover{color:#3ce6a4}
+  .public-event-card.is-featured{flex-direction:row}
+  .public-event-card.is-featured .public-event-media{width:44%;height:auto;min-height:188px}
+  .public-event-card.is-featured .public-event-shade{background:linear-gradient(90deg,rgba(4,12,9,.08),rgba(4,12,9,.1)),linear-gradient(0deg,rgba(4,12,9,.5),transparent 65%)}
+  .public-event-card.is-featured .public-event-body{padding:18px 20px 15px}
+  .public-event-card.is-featured .public-event-title{font-size:19px}
+  .public-event-card.is-featured .public-event-host{font-size:10.5px}
+  .public-empty{grid-column:1/-1;padding:28px 16px;text-align:center;border:1px dashed rgba(255,255,255,.14);border-radius:14px;color:#83988e;font-size:11px}
+
+  /* Online / Hybrid format pills + moderation */
+  .mode-pill{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:.2rem .45rem;font:600 8px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;border:1px solid transparent;white-space:nowrap}
+  .mode-online{background:rgba(116,230,246,.1);color:#8fe7f4;border-color:rgba(116,230,246,.26)}
+  .mode-hybrid{background:rgba(246,201,119,.11);color:#f6c977;border-color:rgba(246,201,119,.28)}
+  html.light-theme .mode-online{background:rgba(8,145,178,.2);color:#085a6b;border-color:rgba(8,145,178,.5)}
+  html.light-theme .mode-hybrid{background:rgba(217,119,6,.22);color:#7a4304;border-color:rgba(180,83,9,.55)}
+  .mod-btn{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:6px;border:1px solid rgba(255,255,255,.12);color:#8ba39a;background:transparent;opacity:0;transition:.16s;cursor:pointer}
+  .chat-line:hover .mod-btn,.mod-btn:focus-visible{opacity:1}
+  .mod-btn:hover{border-color:rgba(255,120,120,.5);color:#ff9d9d;background:rgba(255,86,86,.1)}
+  .mod-btn.is-muted{opacity:1;border-color:rgba(255,120,120,.45);color:#ff9d9d;background:rgba(255,86,86,.12)}
+  .muted-row{opacity:.5}
+  .muted-flag{display:inline-flex;align-items:center;gap:3px;border-radius:5px;padding:.08rem .28rem;font:600 7.5px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,86,86,.14);color:#ff9d9d;border:1px solid rgba(255,86,86,.3)}
+  @media(max-width:760px){
+    .public-day-board{grid-template-columns:1fr;gap:12px;padding:21px 0}
+    .public-day-stamp{display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:12px;align-items:center}
+    .public-day-stamp:after{display:none}
+    .public-day-kicker{grid-column:2;grid-row:1;align-self:end}
+    .public-day-number{grid-column:1;grid-row:1/3;font-size:38px;margin:0;align-self:center}
+    .public-day-date{grid-column:2;grid-row:2;align-self:start}
+    .public-day-theme{display:none}
+    .public-day-marker{grid-column:3;grid-row:1/3;margin:0;justify-self:end}
+  }
+  @media(max-width:580px){
+    .public-event-grid{grid-template-columns:1fr}
+    .public-event-card.is-featured{grid-column:auto;flex-direction:column}
+    .public-event-card.is-featured .public-event-media{width:100%;height:150px;min-height:0}
+    .public-event-card.is-featured .public-event-body{padding:12px 13px 11px}
+    .public-event-card.is-featured .public-event-title{font-size:15px}
+    .public-day-heading{margin-bottom:9px}
+  }
+
   .avatar-ring{box-shadow:0 0 0 1px rgba(255,255,255,.14),0 0 0 4px rgba(60,230,164,.1)}
   .handle-tag{font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.02em;border-radius:5px;padding:.1rem .3rem;font-weight:600}
   .handle-guest{background:rgba(167,139,250,.16);color:#c4b5fd;border:1px solid rgba(167,139,250,.25)}
@@ -252,6 +328,15 @@
   html.light-theme .surface{background:linear-gradient(160deg, rgba(8,28,20,.035), rgba(8,28,20,.01))}
   html.light-theme .chip{background:rgba(8,28,20,.035);border-color:var(--line);color:#4f6a5f}
   html.light-theme .chip:hover{border-color:rgba(8,28,20,.24);color:#0f1f19}
+  html.light-theme .public-day-board{border-color:rgba(8,28,20,.1)}
+  html.light-theme .public-day-number{color:rgba(13,148,104,.66)}
+  html.light-theme .public-day-kicker,html.light-theme .public-day-heading-label,html.light-theme .public-day-heading-count{color:#71877d}
+  html.light-theme .public-day-date,html.light-theme .public-event-title{color:#13251d}
+  html.light-theme .public-day-theme,html.light-theme .public-event-host,html.light-theme .public-event-meta{color:#60776c}
+  html.light-theme .public-event-card{background:linear-gradient(155deg,#ffffff,#f6faf7);border-color:rgba(8,28,20,.12);box-shadow:0 8px 24px -22px rgba(8,28,20,.3)}
+  html.light-theme .public-event-card:hover{border-color:rgba(13,148,104,.38);box-shadow:0 22px 45px -35px rgba(13,148,104,.45)}
+  html.light-theme .public-event-stage{background:rgba(4,10,8,.58)}
+  html.light-theme .public-empty{border-color:rgba(8,28,20,.16);color:#647a70}
   html.light-theme .sidebar-link{color:#5c7569}
   html.light-theme .sidebar-link:hover{background:rgba(8,28,20,.05);color:#0f1f19}
   html.light-theme .sidebar-link.active{background:linear-gradient(90deg, rgba(16,150,100,.15), rgba(16,150,100,.02));color:#0b4a32;border-color:rgba(16,150,100,.25)}
@@ -272,12 +357,19 @@
   html.light-theme .text-gradient{background:linear-gradient(100deg,#12b981 0%,#0d9488 48%,#0f766e 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 
   /* badges */
-  html.light-theme .badge-live{background:rgba(220,38,38,.1);color:#b91c1c;border-color:rgba(220,38,38,.28)}
-  html.light-theme .badge-upcoming{background:rgba(8,145,178,.1);color:#0e6c85;border-color:rgba(8,145,178,.25)}
-  html.light-theme .badge-ended{background:rgba(8,28,20,.05);color:#5c7569;border-color:rgba(8,28,20,.12)}
-  html.light-theme .badge-mint{background:rgba(16,163,106,.1);color:#0c8356;border-color:rgba(16,163,106,.3)}
-  html.light-theme .badge-amber{background:rgba(217,119,6,.12);color:#9a5b05;border-color:rgba(217,119,6,.3)}
-  html.light-theme .badge-guest{background:rgba(124,58,237,.1);color:#6d28d9;border-color:rgba(124,58,237,.28)}
+  html.light-theme .badge-live{background:rgba(220,38,38,.18);color:#9b1212;border-color:rgba(185,28,28,.5)}
+  html.light-theme .badge-upcoming{background:rgba(8,145,178,.2);color:#085a6b;border-color:rgba(8,145,178,.5)}
+  html.light-theme .badge-ended{background:rgba(8,28,20,.1);color:#3d5248;border-color:rgba(8,28,20,.26)}
+  html.light-theme .badge-mint{background:rgba(16,163,106,.2);color:#086844;border-color:rgba(13,122,80,.5)}
+  html.light-theme .badge-amber{background:rgba(217,119,6,.22);color:#7a4304;border-color:rgba(180,83,9,.55)}
+  html.light-theme .badge-guest{background:rgba(124,58,237,.18);color:#5b21b6;border-color:rgba(109,40,217,.5)}
+  /* Badges over photos sit on a dark scrim — keep them glassy and light in both themes */
+  html.light-theme .badge.bg-black\/40,html.light-theme .badge.bg-black\/45,html.light-theme .badge.bg-black\/50{color:rgba(255,255,255,.85)!important;background:rgba(0,0,0,.5)!important;border-color:rgba(255,255,255,.18)!important}
+  html.light-theme .badge.on-photo.badge-live{background:rgba(0,0,0,.5);color:#ffb4b4;border-color:rgba(255,150,150,.55)}
+  html.light-theme .badge.on-photo.badge-upcoming{background:rgba(0,0,0,.5);color:#b9f3ff;border-color:rgba(185,243,255,.5)}
+  html.light-theme .badge.on-photo.badge-ended{background:rgba(0,0,0,.5);color:#e4eee8;border-color:rgba(255,255,255,.35)}
+  html.light-theme .mode-pill.on-photo.mode-online{background:rgba(0,0,0,.5);color:#b9f3ff;border-color:rgba(185,243,255,.5)}
+  html.light-theme .mode-pill.on-photo.mode-hybrid{background:rgba(0,0,0,.5);color:#ffe3a3;border-color:rgba(255,227,163,.5)}
   html.light-theme .handle-guest{background:rgba(124,58,237,.1);color:#6d28d9;border-color:rgba(124,58,237,.25)}
   html.light-theme .handle-member{background:rgba(16,163,106,.1);color:#0c8356;border-color:rgba(16,163,106,.25)}
   html.light-theme .handle-host{background:rgba(217,119,6,.12);color:#9a5b05;border-color:rgba(217,119,6,.28)}
@@ -381,9 +473,9 @@
         </div>
       </div>
       <div class="hidden md:flex items-center gap-7 text-[13px] text-[#93aaa0]">
-        <a href="#" onclick="return false" class="hover:text-white transition">How it works</a>
-        <a href="#" onclick="return false" class="hover:text-white transition">This season</a>
-        <a href="#" onclick="return false" class="hover:text-white transition">For organizers</a>
+        <a href="#this-season" class="hover:text-white transition font-medium">This season</a>
+        <a href="#how-it-works" class="hover:text-white transition">How it works</a>
+        <button data-action="nav-organizers" class="hover:text-white transition">For organizers</button>
       </div>
       <div class="flex items-center gap-3">
         <div class="hidden sm:flex items-center gap-2 rounded-full border border-white/10 bg-white/[.03] px-3 py-1.5">
@@ -421,6 +513,18 @@
           <div class="flex items-center gap-2 text-[12px] text-[#b6cbc2]"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3ce6a4" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> One-click event access</div>
           <div class="flex items-center gap-2 text-[12px] text-[#b6cbc2]"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3ce6a4" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Speaker-moderated Q&A</div>
           <div class="flex items-center gap-2 text-[12px] text-[#b6cbc2]"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3ce6a4" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Verified certificates</div>
+        </div>
+
+        <!-- Hero Actions -->
+        <div class="mt-7 flex flex-wrap items-center gap-3">
+          <a href="#this-season" class="btn btn-white h-10 px-5 text-[12.5px] font-bold shadow-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M16 2v5M8 2v5M3 10h18"/></svg>
+            View Schedule ↓
+          </a>
+          <button data-action="focus-auth" class="btn btn-ghost h-10 px-4 text-[12.5px]">
+            Get All-Access Pass
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
         </div>
 
         <!-- stage visual -->
@@ -608,7 +712,7 @@
             <div class="mt-4 rounded-xl border border-dashed border-white/15 bg-white/[.025] p-3">
               <div class="flex items-center justify-between mb-2">
                 <span class="font-mono text-[9px] tracking-[.14em] text-[#8ba39a]">SAMPLE GAME PASS</span>
-                <span class="badge badge-amber">HACKATHON DEMO</span>
+                <span class="badge badge-amber">DEMO</span>
               </div>
               <div class="flex items-center justify-between gap-2">
                 <div>
@@ -640,6 +744,69 @@
         </div>
       </div>
     </div>
+
+    <!-- THIS SEASON: GENERAL SCHEDULE -->
+    <section id="this-season" class="pb-16 pt-10 border-t border-white/[.08] scroll-mt-24">
+      <div id="this-season-inner"></div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works" class="pb-14 pt-6 scroll-mt-24">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <div class="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/[.06] px-3 py-1.5 mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          <span class="font-mono text-[9px] tracking-[.18em] text-emerald-300/80 uppercase">How it works</span>
+        </div>
+        <h2 class="font-display text-[28px] sm:text-[34px] font-semibold tracking-[-.03em] leading-tight">One stage, <span class="text-gradient">three ways in.</span></h2>
+        <p class="text-[13px] text-[#93aaa0] mt-3 leading-relaxed">Pick the experience that fits you. Switch roles anytime from your profile — your pass, handle and history stay with you.</p>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-4">
+        <div class="rounded-2xl border border-white/[.09] bg-[#0a1311] p-5 hover:border-emerald-400/25 transition">
+          <div class="w-10 h-10 rounded-xl bg-emerald-400/12 border border-emerald-400/20 grid place-items-center text-emerald-300 mb-4">🎟️</div>
+          <div class="flex items-center gap-2 mb-1.5"><h3 class="font-display text-[15px] font-semibold">Attendee</h3><span class="badge badge-mint">Pass holder</span></div>
+          <p class="text-[12px] text-[#93aaa0] leading-relaxed">One pass, every stage. Vote in live polls, upvote the best questions, and download verified certificates the moment you win.</p>
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            <span class="chip !py-1 !text-[9.5px]">All stages</span>
+            <span class="chip !py-1 !text-[9.5px]">Polls &amp; Q&amp;A</span>
+            <span class="chip !py-1 !text-[9.5px]">Certificates</span>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-white/[.09] bg-[#0a1311] p-5 hover:border-amber-300/25 transition">
+          <div class="w-10 h-10 rounded-xl bg-amber-300/12 border border-amber-300/20 grid place-items-center text-amber-200 mb-4">🎛️</div>
+          <div class="flex items-center gap-2 mb-1.5"><h3 class="font-display text-[15px] font-semibold">Organizer</h3><span class="badge badge-amber">Control room</span></div>
+          <p class="text-[12px] text-[#93aaa0] leading-relaxed">Run the whole show from one desk. Approve access, go live, broadcast stage notes, and issue credentials to winners.</p>
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            <span class="chip !py-1 !text-[9.5px]">Approvals</span>
+            <span class="chip !py-1 !text-[9.5px]">Stage control</span>
+            <span class="chip !py-1 !text-[9.5px]">Credentials</span>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-white/[.09] bg-[#0a1311] p-5 hover:border-violet-300/25 transition">
+          <div class="w-10 h-10 rounded-xl bg-violet-300/12 border border-violet-300/20 grid place-items-center text-violet-200 mb-4">👀</div>
+          <div class="flex items-center gap-2 mb-1.5"><h3 class="font-display text-[15px] font-semibold">Guest</h3><span class="badge badge-guest">[Guest] tag</span></div>
+          <p class="text-[12px] text-[#93aaa0] leading-relaxed">No account needed. Watch public stages with a <span class="handle-tag handle-guest">[GUEST]</span> tag, then upgrade to a full pass whenever you're ready.</p>
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            <span class="chip !py-1 !text-[9.5px]">No sign-up</span>
+            <span class="chip !py-1 !text-[9.5px]">Public stages</span>
+            <span class="chip !py-1 !text-[9.5px]">Upgrade anytime</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LANDING FOOTER -->
+    <footer class="pb-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/[.06] mt-6">
+      <div class="flex items-center gap-2.5">
+        <div class="w-6 h-6 rounded-lg bg-emerald-400 grid place-items-center text-[#04120c] font-display font-bold text-[11px]">R</div>
+        <span class="text-[12px] text-[#8ba39a] font-medium">RealStream Season 2026 · StageCraft</span>
+      </div>
+      <p class="text-[11px] text-[#526a60]">© 2026 RealStream. All rights reserved.</p>
+      <div class="flex items-center gap-4 text-[11px] text-[#8ba39a]">
+        <a href="#this-season" class="hover:text-white transition">Schedule</a>
+        <a href="#how-it-works" class="hover:text-white transition">How it works</a>
+        <button data-action="focus-auth" class="hover:text-white transition">Sign in</button>
+      </div>
+    </footer>
   </div>
 </div>
 
@@ -662,8 +829,8 @@ const store = {
   get(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } },
   set(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
 };
-const VERSION = 7;
-const KEY = 'realstream.stagecraft.v7';
+const VERSION = 10;
+const KEY = 'realstream.stagecraft.v10';
 const modalRoot = $('#modal-root');
 
 /* ---------- icons ---------- */
@@ -742,29 +909,40 @@ const ACCOUNTS = [
   { name:'Nisha Kapoor', email:'nisha@stagecraft.io', role:'organizer', hue:158, note:'Stagecraft Workspace' },
   { name:'Riya Sen', email:'riya.sen@gmail.com', role:'attendee', hue:192, note:'Personal account' }
 ];
-const CATEGORIES = ['Cultural','Esports','Guest Lecture','Ceremony','Workshop'];
+const CATEGORIES = ['Cultural','Esports','Guest Lecture','Quiz','Ceremony','Workshop'];
+const MODES = [
+  { key:'Online', label:'Fully online', blurb:'Join from anywhere — stream, chat and vote in-app.', icon:'globe' },
+  { key:'Hybrid', label:'Hybrid', blurb:'On-campus venue plus a synced live stream for remote viewers.', icon:'users' }
+];
 function seedEvents(){
   const list = [
-    { id:'ev-opener', title:'Opening Ceremony', cat:'Ceremony', host:'RealStream Season 26', time:'Yesterday · 10:00 AM', status:'Ended', viewers:0, approval:false, img:IMG.concert2, emoji:'🎉', stage:'MAIN', desc:'The curtain-raiser: campus anthem, the season film and the reveal of the 2026 stage line-up.' },
-    { id:'ev-ai', title:'The AI We Deserve', cat:'Guest Lecture', host:'Dr. Ananya Rao · IISc', time:'Today · 11:30 AM', status:'Live', viewers:12480, approval:false, img:IMG.speaker, emoji:'🎙️', stage:'MAIN', desc:'A grounded, hopeful look at how small teams can build useful AI — and keep humans in the loop.' },
-    { id:'ev-bgmi', title:'BGMI Grand Finale', cat:'Esports', host:'RealStream Arena · Casted', time:'Today · 1:00 PM', status:'Live', viewers:14208, approval:true, img:IMG.esports, emoji:'🎮', stage:'ARENA', desc:'Three maps. Two campus giants. One trophy. The grand finale with live casting and audience MVP voting.' },
-    { id:'ev-talent', title:'Talent Hunt Finals', cat:'Cultural', host:'Tanya Bose · Host', time:'Today · 2:00 PM', status:'Upcoming', viewers:0, approval:true, img:IMG.concert, emoji:'🎸', stage:'MAIN', desc:'Nine finalists, one spotlight. Music, dance and comedy from the best acts on campus.' },
-    { id:'ev-openmic', title:'Open Mic: Midnight Set', cat:'Cultural', host:'The Loose Ends Collective', time:'Today · 6:30 PM', status:'Upcoming', viewers:0, approval:false, img:IMG.concert2, emoji:'🎤', stage:'LOUNGE', desc:'Unscripted verses, half-finished songs and very careful confessions. Open to everyone.' },
-    { id:'ev-cs2', title:'CS2 Campus Clash', cat:'Esports', host:'Campus Esports Guild', time:'Tomorrow · 4:00 PM', status:'Upcoming', viewers:0, approval:true, img:IMG.gaming, emoji:'🔫', stage:'ARENA', desc:'The tactical semifinal. Two roster-verified teams, one spot in the grand final.' },
-    { id:'ev-dance', title:'Footwork: Dance Battle', cat:'Cultural', host:'Studio Nine', time:'Tomorrow · 7:00 PM', status:'Upcoming', viewers:0, approval:false, img:IMG.concert, emoji:'🕺', stage:'MAIN', desc:'Crew against crew, no choreography safe. Audience votes decide the wildcard.' },
-    { id:'ev-startup', title:'Build Night: Pitch Arena', cat:'Workshop', host:'Campus Founders Club', time:'Sat · 10:00 AM', status:'Upcoming', viewers:0, approval:false, img:IMG.speaker2, emoji:'🚀', stage:'LAB', desc:'Six student teams pitch in six minutes. Live judging, audience scoring and instant certificates.' },
-    { id:'ev-cs2b', title:'Retro Arcade Hour', cat:'Esports', host:'RealStream Lounge', time:'Sat · 5:00 PM', status:'Upcoming', viewers:0, approval:false, img:IMG.gaming2, emoji:'🕹️', stage:'LOUNGE', desc:'Street Fighter, Mario Kart and bragging rights. A community chill-out before the awards.' },
-    { id:'ev-awards', title:'The Stagecraft Awards', cat:'Ceremony', host:'RealStream Season 26', time:'Sat · 8:00 PM', status:'Upcoming', viewers:0, approval:true, img:IMG.concert2, emoji:'🏆', stage:'MAIN', desc:'Winners take the stage. Verified digital credentials drop in-app right after the shutter clicks.' }
+    { id:'ev-opener', title:'Opening Ceremony', cat:'Ceremony', host:'RealStream Season 26', time:'Yesterday · 10:00 AM', status:'Ended', viewers:0, approval:false, mode:'Hybrid', venue:'Main Auditorium', img:IMG.concert2, emoji:'🎉', stage:'MAIN', tag:'Curtain Raiser', desc:'The curtain-raiser: campus anthem, the season film and the reveal of the 2026 stage line-up.' },
+    { id:'ev-ai', title:'The AI We Deserve', cat:'Guest Lecture', host:'Dr. Ananya Rao · IISc', time:'Today · 11:30 AM', status:'Live', viewers:12480, approval:false, mode:'Hybrid', venue:'Main Auditorium', img:IMG.speaker, emoji:'🎙️', stage:'MAIN', tag:'Keynote Address', desc:'A grounded, hopeful look at how small teams can build useful AI — and keep humans in the loop. In the auditorium and streamed live.' },
+    { id:'ev-anime', title:'Anime Jeopardy', cat:'Quiz', host:'Otaku Society · Quizmaster Dev', time:'Today · 12:30 PM', status:'Live', viewers:3860, approval:false, mode:'Online', img:IMG.gaming2, emoji:'🎴', stage:'LOUNGE', tag:'Prelims', desc:'Decode the lore, claim the throne. Rapid-fire anime trivia across three escalating rounds.' },
+    { id:'ev-battleground', title:'The Battleground: BGMI', cat:'Esports', host:'RealStream Arena · Casted', time:'Today · 1:00 PM', status:'Live', viewers:14208, approval:true, mode:'Hybrid', venue:'Esports Arena, Block C', img:IMG.esports, emoji:'🎮', stage:'ARENA', tag:'Solo Qualifiers', desc:'Three maps. Two campus giants. One trophy. Live casting with audience MVP voting between drops.' },
+    { id:'ev-capitol', title:'Capitol Conclave', cat:'Cultural', host:'Model UN Society', time:'Today · 2:00 PM', status:'Upcoming', viewers:0, approval:true, mode:'Hybrid', venue:'Seminar Hall 2', img:IMG.speaker2, emoji:'🏛️', stage:'MAIN', tag:'Debate · Deliberate · Decide', desc:'Delegates take the floor for a fast-paced policy showdown. Press corps and audience votes included.' },
+    { id:'ev-shutter', title:'Shutter Safari', cat:'Cultural', host:'Lens & Light Collective', time:'Today · 4:00 PM', status:'Upcoming', viewers:0, approval:false, mode:'Online', img:IMG.concert, emoji:'📸', stage:'LAB', tag:'Submission Round', desc:'One theme, one golden hour. Submit your frame, then watch the live critique from visiting photographers.' },
+    { id:'ev-openmic', title:'Open Mic: Midnight Set', cat:'Cultural', host:'The Loose Ends Collective', time:'Today · 6:30 PM', status:'Upcoming', viewers:0, approval:false, mode:'Online', img:IMG.concert2, emoji:'🎤', stage:'LOUNGE', tag:'Open Floor', desc:'Unscripted verses, half-finished songs and very careful confessions. Open to everyone.' },
+    { id:'ev-neeti', title:'Neeti Sabha', cat:'Quiz', host:'Civics Circle · Hosted by Arjun', time:'Tomorrow · 10:00 AM', status:'Upcoming', viewers:0, approval:false, mode:'Online', img:'https://images.pexels.com/photos/18067562/pexels-photo-18067562.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200', emoji:'⚖️', stage:'LAB', tag:'Preliminary Quiz', desc:'Debate, deliberate, decide. A policy quiz where every wrong buzzer costs the bench.' },
+    { id:'ev-judge', title:'Judge a Book by its Cover', cat:'Quiz', host:'Literary Society', time:'Tomorrow · 12:00 PM', status:'Upcoming', viewers:0, approval:false, mode:'Online', img:IMG.speaker2, emoji:'📚', stage:'LOUNGE', tag:'Quiz', desc:'Covers only, no blurbs. Guess the book, the author and the decade before the timer runs dry.' },
+    { id:'ev-freefire', title:'The Battleground: Free Fire', cat:'Esports', host:'Campus Esports Guild', time:'Tomorrow · 4:00 PM', status:'Upcoming', viewers:0, approval:true, mode:'Hybrid', venue:'Esports Arena, Block C', img:IMG.gaming, emoji:'🔥', stage:'ARENA', tag:'Solo Qualifiers', desc:'Squad wipeouts and clutch revives. Roster-verified teams only, streamed with live commentary.' },
+    { id:'ev-nritya', title:'Nrityanjali: Dance Face-off', cat:'Cultural', host:'Studio Nine', time:'Tomorrow · 7:00 PM', status:'Upcoming', viewers:0, approval:false, mode:'Hybrid', venue:'Open Air Theatre', img:IMG.concert, emoji:'🕺', stage:'MAIN', tag:'Face-off', desc:'Crew against crew, no choreography safe. Audience votes decide the wildcard entry to the final.' },
+    { id:'ev-prompt', title:'Prompt-to-Pixel', cat:'Workshop', host:'Design & AI Lab', time:'Sat · 10:00 AM', status:'Upcoming', viewers:0, approval:false, mode:'Online', img:IMG.gaming2, emoji:'🎨', stage:'LAB', tag:'R1 · Filtration', desc:'From a one-line prompt to a finished poster. Build live, then submit before the round closes.' },
+    { id:'ev-bullrun', title:'Bull Run: Market Mayhem', cat:'Quiz', host:'Finance Forum', time:'Sat · 1:00 PM', status:'Upcoming', viewers:0, approval:false, mode:'Online', img:IMG.speaker2, emoji:'📈', stage:'LAB', tag:'Qualification Quiz', desc:'Mock portfolios, live tickers and a quiz round that decides who trades in the final.' },
+    { id:'ev-utopia', title:'Utopia-e-Saavan', cat:'Cultural', host:'Music Society', time:'Sat · 5:00 PM', status:'Upcoming', viewers:0, approval:false, mode:'Hybrid', venue:'Open Air Theatre', img:'https://images.pexels.com/photos/18685043/pexels-photo-18685043.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200', emoji:'🎶', stage:'LOUNGE', tag:'Music Competition', desc:'Where melody meets monsoon. Acoustic sets, fusion bands and one very loud sing-along finish.' },
+    { id:'ev-awards', title:'The Stagecraft Awards', cat:'Ceremony', host:'RealStream Season 26', time:'Sat · 8:00 PM', status:'Upcoming', viewers:0, approval:false, mode:'Hybrid', venue:'Main Auditorium', img:IMG.concert2, emoji:'🏆', stage:'MAIN', tag:'Closing Night', desc:'Winners take the stage. Open viewing for everyone, with verified digital credentials dropping in-app right after the shutter clicks.' }
   ];
   // General-schedule slots: [day, minutes from midnight, duration]
   const slots = {
-    'ev-opener':[1,600,75], 'ev-ai':[2,690,50], 'ev-bgmi':[2,780,120], 'ev-talent':[2,840,90],
-    'ev-openmic':[2,1110,60], 'ev-startup':[3,600,90], 'ev-cs2':[3,960,120], 'ev-cs2b':[3,1020,60],
-    'ev-dance':[3,1140,75], 'ev-awards':[3,1200,90]
+    'ev-opener':[1,600,75], 'ev-ai':[1,690,50], 'ev-anime':[1,750,60], 'ev-battleground':[1,780,120],
+    'ev-capitol':[1,840,90], 'ev-shutter':[1,960,90], 'ev-openmic':[1,1110,60],
+    'ev-neeti':[2,600,90], 'ev-judge':[2,720,60], 'ev-freefire':[2,960,150], 'ev-nritya':[2,1140,90],
+    'ev-prompt':[3,600,120], 'ev-bullrun':[3,780,120], 'ev-utopia':[3,1020,120], 'ev-awards':[3,1200,90]
   };
   list.forEach(e => {
     const s = slots[e.id] || [3,1080,60];
     e.day = s[0]; e.mins = s[1]; e.dur = s[2];
+    if(!e.mode) e.mode = 'Online';
   });
   return list;
 }
@@ -776,22 +954,26 @@ function defaultState(){
     access: [],
     registrations: [],
     requests: [
-      { id:'rq-1', name:'Ishaan Verma', handle:'ishaan.v', email:'ishaan@campus.edu', role:'attendee', eventId:'ev-bgmi', note:'Esports club member · ticket RS26-9T2P-1180', time:'8 min ago', status:'pending' },
-      { id:'rq-2', name:'Maya', handle:'Maya', email:'guest:maya', role:'guest', eventId:'ev-talent', note:'Guest request · wants to vote in the finals', time:'14 min ago', status:'pending' },
+      { id:'rq-1', name:'Ishaan Verma', handle:'ishaan.v', email:'ishaan@campus.edu', role:'attendee', eventId:'ev-battleground', note:'Esports club member · ticket RS26-9T2P-1180', time:'8 min ago', status:'pending' },
+      { id:'rq-2', name:'Maya', handle:'Maya', email:'guest:maya', role:'guest', eventId:'ev-capitol', note:'Guest request · wants to vote in the conclave', time:'14 min ago', status:'pending' },
       { id:'rq-3', name:'Sara Khan', handle:'sara.k', email:'sara@campus.edu', role:'attendee', eventId:'ev-awards', note:'Nominee · Best Campus Act', time:'21 min ago', status:'pending' },
-      { id:'rq-4', name:'Dev Patel', handle:'dev.p', email:'dev@campus.edu', role:'attendee', eventId:'ev-cs2', note:'Team captain · roster verification submitted', time:'1 hr ago', status:'approved' }
+      { id:'rq-4', name:'Dev Patel', handle:'dev.p', email:'dev@campus.edu', role:'attendee', eventId:'ev-freefire', note:'Team captain · roster verification submitted', time:'1 hr ago', status:'approved' }
     ],
     questions: [
       { id:'q-1', eventId:'ev-ai', text:'How do you see small student teams using AI without a big data team behind them?', author:'Rahul Menon', role:'attendee', votes:84, answered:true, time:'12 min ago' },
-      { id:'q-2', eventId:'ev-bgmi', text:'Will the finals be available as a replay for ticket holders?', author:'Maya', role:'guest', votes:31, answered:false, time:'6 min ago' },
-      { id:'q-3', eventId:'ev-talent', text:'What exactly are the judging criteria for the talent hunt finals?', author:'Priya S', role:'attendee', votes:47, answered:false, time:'22 min ago' },
+      { id:'q-2', eventId:'ev-battleground', text:'Will the finals be available as a replay for ticket holders?', author:'Maya', role:'guest', votes:31, answered:false, time:'6 min ago' },
+      { id:'q-3', eventId:'ev-capitol', text:'What exactly are the judging criteria for the conclave?', author:'Priya S', role:'attendee', votes:47, answered:false, time:'22 min ago' },
       { id:'q-4', eventId:'ev-ai', text:'Can participants get certificates for taking part, not just for winning?', author:'Dev Patel', role:'attendee', votes:19, answered:false, time:'31 min ago' }
     ],
     qaVotes: [],
+    muted: [],
+    modLog: [
+      { id:'ml-0', handle:'spam.bot', action:'restricted', by:'Nisha Kapoor', reason:'Repeated promo links', time:'34 min ago' }
+    ],
     polls: [
-      { id:'p-1', eventId:'ev-bgmi', question:'Who takes Map 3?', options:[{label:'Team Alpha',votes:612},{label:'Team Omega',votes:498},{label:'Draw / rematch',votes:97}], voted:null },
+      { id:'p-1', eventId:'ev-battleground', question:'Who takes Map 3?', options:[{label:'Team Alpha',votes:612},{label:'Team Omega',votes:498},{label:'Draw / rematch',votes:97}], voted:null },
       { id:'p-2', eventId:'ev-ai', question:'Biggest real-world AI shift in 2026?', options:[{label:'Agents at work',votes:284},{label:'Creative tools',votes:196},{label:'Personal health',votes:152},{label:'Education',votes:121}], voted:null },
-      { id:'p-3', eventId:'ev-talent', question:'Which act should open the finale?', options:[{label:'The Raagas',votes:143},{label:'Studio 9 Dance',votes:187},{label:'Comedy set',votes:96}], voted:null }
+      { id:'p-3', eventId:'ev-anime', question:'Which round decides Anime Jeopardy?', options:[{label:'Opening riddles',votes:143},{label:'Soundtrack round',votes:187},{label:'Final wager',votes:96}], voted:null }
     ],
     chat: [
       { id:'c-1', name:'Rahul', role:'attendee', text:'That clutch was unreal 🔥' },
@@ -800,9 +982,9 @@ function defaultState(){
       { id:'c-4', name:'Ananya', role:'organizer', text:'Q&A opens in 5 — drop your questions.' }
     ],
     certificates: [
-      { id:'RS26-CERT-7K2P', name:'Rohan Iyer', event:'BGMI Campus Cup', placement:'Winner', date:'Jan 18, 2026', by:'Stagecraft Ops' },
-      { id:'RS26-CERT-4H9Q', name:'Sara Khan', event:'Talent Hunt', placement:'Runner-up', date:'Jan 17, 2026', by:'Stagecraft Ops' },
-      { id:'RS26-CERT-1M8Z', name:'Team Alpha', event:'BGMI Grand Finale', placement:'Champions', date:'Jan 16, 2026', by:'Stagecraft Ops' }
+      { id:'RS26-CERT-7K2P', name:'Rohan Iyer', event:'Anime Jeopardy', placement:'Winner', date:'Jan 18, 2026', by:'Stagecraft Ops' },
+      { id:'RS26-CERT-4H9Q', name:'Sara Khan', event:'Capitol Conclave', placement:'Runner-up', date:'Jan 17, 2026', by:'Stagecraft Ops' },
+      { id:'RS26-CERT-1M8Z', name:'Team Alpha', event:'The Battleground: BGMI', placement:'Champions', date:'Jan 16, 2026', by:'Stagecraft Ops' }
     ],
     notifications: [
       { id:'n-1', text:'Your all-access pass is active for Season 2026.', time:'Just now', unread:true, icon:'ticket' },
@@ -814,7 +996,7 @@ function defaultState(){
   };
 }
 let state = defaultState();
-const ui = { view:'overview', scheduleFilter:'all', scheduleCat:'all', scheduleQuery:'', scheduleMode:'agenda', scheduleDay:'all', myAgendaOnly:false, qaSort:'top', liveEvent:'ev-ai', panel:'chat', announcementDismissed:false, certVerified:null, chatRefresh:true };
+const ui = { view:'overview', scheduleFilter:'all', scheduleCat:'all', scheduleQuery:'', scheduleMode:'agenda', scheduleDay:'all', scheduleFormat:'all', publicDay:'all', publicCat:'all', publicFormat:'all', myAgendaOnly:false, qaSort:'top', liveEvent:'ev-ai', panel:'chat', announcementDismissed:false, certVerified:null, chatRefresh:true, pendingView:null };
 let pendingAuth = null;
 let livePanelTab = 'chat';
 
@@ -831,7 +1013,10 @@ function loadState(){
   state.events.forEach((e, i) => {
     if(typeof e.day !== 'number'){ e.day = i === 0 ? 1 : (i < 6 ? 2 : 3); e.mins = 600 + (i % 6) * 60; }
     if(!e.dur) e.dur = 60;
+    if(!e.mode) e.mode = 'Online';
   });
+  if(!Array.isArray(state.muted)) state.muted = [];
+  if(!Array.isArray(state.modLog)) state.modLog = [];
 }
 const role = () => state.session ? state.session.role : null;
 const isOrganizer = () => role() === 'organizer';
@@ -857,10 +1042,35 @@ function canEnter(ev){
   if(!state.session) return false;
   return state.requests.some(r => r.eventId === ev.id && r.status === 'approved' && (r.email === state.session.email || r.handle === state.session.nickname));
 }
-function statusBadge(s){
+function statusBadge(s, onPhoto = false){
   const map = { Live:'badge-live', Upcoming:'badge-upcoming', Ended:'badge-ended', Approved:'badge-mint', Pending:'badge-amber', Declined:'badge-ended' };
   const dot = s === 'Live' ? '<span class="live-dot" style="width:5px;height:5px"></span>' : '';
-  return `<span class="badge ${map[s] || 'badge-ended'}">${dot}${esc(s)}</span>`;
+  return `<span class="badge ${map[s] || 'badge-ended'}${onPhoto ? ' on-photo' : ''}">${dot}${esc(s)}</span>`;
+}
+function modeBadge(ev, compact = false, onPhoto = false){
+  const hybrid = (ev.mode || 'Online') === 'Hybrid';
+  return `<span class="mode-pill ${hybrid ? 'mode-hybrid' : 'mode-online'}${onPhoto ? ' on-photo' : ''}">${icon(hybrid ? 'users' : 'globe', compact ? 8 : 9)} ${hybrid ? 'Hybrid' : 'Online'}</span>`;
+}
+/* ---------- moderation ---------- */
+function isMuted(handle){ return (state.muted || []).some(m => m.handle.toLowerCase() === String(handle || '').toLowerCase()); }
+function mutedEntry(handle){ return (state.muted || []).find(m => m.handle.toLowerCase() === String(handle || '').toLowerCase()); }
+function amIMuted(){ return state.session ? isMuted(state.session.nickname) : false; }
+function toggleMute(handle, role, reason){
+  if(!isOrganizer()){ toast('Only organizers can moderate the room.', 'error', 'Host tools'); return; }
+  if(role === 'organizer'){ toast('Hosts cannot be restricted.', 'error', 'Not allowed'); return; }
+  const existing = mutedEntry(handle);
+  if(existing){
+    state.muted = state.muted.filter(m => m.handle.toLowerCase() !== handle.toLowerCase());
+    state.modLog.unshift({ id:'ml-'+Date.now(), handle, action:'restored', by:sock().nickname, reason:'Restriction lifted', time:'Just now' });
+    toast(`${handle} can post again.`, 'success', 'Restriction lifted');
+  } else {
+    state.muted.push({ handle, role: role || 'attendee', by:sock().nickname, reason: reason || 'Community guidelines', time:'Just now' });
+    state.modLog.unshift({ id:'ml-'+Date.now(), handle, action:'restricted', by:sock().nickname, reason: reason || 'Community guidelines', time:'Just now' });
+    toast(`${handle} is now read-only in chat and Q&A.`, 'info', 'Commenter restricted');
+  }
+  if(state.modLog.length > 12) state.modLog = state.modLog.slice(0, 12);
+  save();
+  if(ui.view === 'live') renderLivePanel(); else renderView();
 }
 const nf = n => Number(n || 0).toLocaleString('en-US');
 const fmtDate = (d) => new Date(d).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
@@ -913,6 +1123,11 @@ function toggleTheme(){
 }
 
 /* ---------- authentication ---------- */
+function focusAuthCard(){
+  const c = $('#auth-card');
+  if(c) c.scrollIntoView({ behavior:'smooth', block:'center' });
+  setTimeout(()=>{ const i=$('#email-input'); if(i) i.focus(); }, 350);
+}
 function authTab(tab){
   $$('.auth-tab').forEach(b => {
     const on = b.dataset.tab === tab;
@@ -955,7 +1170,7 @@ function openGoogleModal(){
         </button>
       </div>
       <div class="px-6 py-4 text-[10.5px] leading-relaxed text-[#5f6368] border-t border-[#e8eaed]">
-        To continue, Google will share your name, email address and profile picture with RealStream. This is a demonstration— no real Google account is contacted.
+        To continue, Google will share your name, email address and profile picture with RealStream. This is a demo — no real Google account is contacted.
       </div>
     </div>
   </div>`;
@@ -1048,7 +1263,9 @@ function finalizeSession(data){
   };
   state.notifications.unshift({ id:'n-'+Date.now(), text: data.role === 'organizer' ? 'Control room unlocked. Your host pass is active.' : data.role === 'guest' ? 'You joined as a guest. Public stages are open.' : 'Your Season 2026 pass is active. See you on stage.', time:'Just now', unread:true, icon:'ticket' });
   save(); closeModal();
-  ui.view = 'overview'; ui.announcementDismissed = false;
+  const dest = ui.pendingView && ['schedule','organizer','live'].includes(ui.pendingView) ? ui.pendingView : 'overview';
+  ui.pendingView = null;
+  ui.view = dest; ui.announcementDismissed = false;
   showApp();
   toast(`Welcome to the stage, ${esc(state.session.nickname)}.`, 'success', data.role === 'organizer' ? 'Organizer studio unlocked' : 'You’re in');
 }
@@ -1250,7 +1467,7 @@ function renderShell(){
       </div>` : ''}
       <main id="view-root" class="max-w-[1420px] mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-7"></main>
       <footer class="max-w-[1420px] mx-auto px-4 sm:px-6 lg:px-8 pb-8 pt-2 flex flex-col sm:flex-row items-center justify-between gap-2 border-t border-white/[.05] mt-4">
-        <p class="text-[10px] text-[#526a60]">© 2026 RealStream · Stagecraft Buildathon</p>
+        <p class="text-[10px] text-[#526a60]">© 2026 RealStream. All rights reserved.</p>
         <div class="flex items-center gap-4 text-[10px] text-[#667f75]"><span class="flex items-center gap-1.5">${icon('shield', 11)} Verified credentials</span><span class="flex items-center gap-1.5">${icon('globe', 11)} Made for campus stages</span><span class="font-mono">v2.6</span></div>
       </footer>
     </div>
@@ -1266,6 +1483,7 @@ function showApp(){
 function showAuth(){
   $('#app-screen').classList.add('hidden');
   $('#auth-screen').classList.remove('hidden');
+  renderPublicSchedule();
   window.scrollTo(0,0);
 }
 function signOut(){
@@ -1319,16 +1537,17 @@ function eventCard(ev){
     <div class="relative h-[132px] overflow-hidden">
       <img src="${ev.img}" alt="${esc(ev.title)}" class="event-img absolute inset-0 w-full h-full object-cover opacity-75" loading="lazy">
       <div class="absolute inset-0 bg-gradient-to-t from-[#0a1311] via-[#0a1311]/20 to-transparent"></div>
-      <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">${statusBadge(ev.status)}${ev.approval ? `<span class="badge bg-black/45 backdrop-blur text-white/70 border-white/15">${icon('lock', 8)} approval</span>` : ''}</div>
-      <div class="absolute top-2.5 right-2.5 rounded-md bg-black/50 backdrop-blur border border-white/10 px-1.5 py-1 text-[8.5px] font-mono text-white/70">${esc(ev.stage)}</div>
-      <div class="absolute bottom-2.5 left-2.5 text-[9px] font-mono tracking-wide text-white/75">${esc(ev.cat.toUpperCase())}</div>
+      <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">${statusBadge(ev.status, true)}${ev.approval ? `<span class="badge bg-black/45 backdrop-blur text-white/70 border-white/15">${icon('lock', 8)} approval</span>` : ''}</div>
+      <div class="absolute top-2.5 right-2.5 flex items-center gap-1.5">${modeBadge(ev, true, true)}<span class="rounded-md bg-black/50 backdrop-blur border border-white/10 px-1.5 py-1 text-[8.5px] font-mono text-white/70">${esc(ev.stage)}</span></div>
+      <div class="absolute bottom-2.5 left-2.5 text-[9px] font-mono tracking-wide text-white/75">${esc(ev.cat.toUpperCase())}${ev.tag ? ` · ${esc(ev.tag)}` : ''}</div>
     </div>
     <div class="p-3.5 flex-1 flex flex-col">
       <h3 class="font-display text-[14.5px] font-semibold leading-tight tracking-tight">${esc(ev.title)}</h3>
       <p class="text-[10.5px] text-[#8ba39a] mt-1 truncate">${esc(ev.host)}</p>
-      <div class="flex items-center gap-2 mt-2.5 text-[10px] text-[#71897f]">
+      <div class="flex items-center gap-2 mt-2.5 text-[10px] text-[#71897f] flex-wrap">
         <span class="flex items-center gap-1">${icon('clock', 10)} ${esc(ev.time)}</span>
         ${ev.viewers ? `<span class="flex items-center gap-1">${icon('eye', 10)} ${nf(ev.viewers)}</span>` : ''}
+        ${ev.mode === 'Hybrid' && ev.venue ? `<span class="flex items-center gap-1 text-amber-300/80">${icon('pin', 10)} ${esc(ev.venue)}</span>` : ''}
       </div>
       <div class="mt-auto pt-3 flex items-center justify-between gap-2 border-t border-white/[.06] mt-3">
         <button class="text-[10px] text-[#8ba39a] hover:text-white flex items-center gap-1" data-action="open-event" data-id="${ev.id}">Details ${icon('arrowRight', 9)}</button>
@@ -1340,7 +1559,7 @@ function eventCard(ev){
 function scheduleRow(ev){
   return `<div class="flex items-center gap-3 p-3 rounded-xl border border-white/[.07] bg-white/[.018] hover:bg-white/[.04] transition">
     <div class="w-9 h-9 rounded-lg grid place-items-center text-[16px] shrink-0 border border-white/10 bg-black/25">${ev.emoji}</div>
-    <div class="min-w-0 flex-1"><div class="flex items-center gap-1.5"><p class="text-[12px] font-semibold truncate">${esc(ev.title)}</p>${ev.status === 'Live' ? '<span class="live-dot" style="width:5px;height:5px"></span>' : ''}</div><p class="text-[10px] text-[#71897f] mt-0.5 truncate">${esc(ev.time)} · ${esc(ev.host)}</p></div>
+    <div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><p class="text-[12px] font-semibold truncate">${esc(ev.title)}</p>${modeBadge(ev, true)}${ev.status === 'Live' ? '<span class="live-dot" style="width:5px;height:5px"></span>' : ''}</div><p class="text-[10px] text-[#71897f] mt-0.5 truncate">${esc(ev.time)} · ${esc(ev.host)}</p></div>
     <div class="shrink-0">${eventAction(ev)}</div>
   </div>`;
 }
@@ -1396,7 +1615,7 @@ function renderOverview(){
         <div class="absolute inset-0 bg-gradient-to-tr from-[#05100c] via-[#05100c]/85 to-[#05100c]/25"></div>
         <div class="relative p-5 sm:p-6 flex flex-col h-full justify-between gap-6">
           <div class="flex items-center justify-between gap-2">
-            <div class="flex items-center gap-2 flex-wrap">${statusBadge(featured.status)}<span class="badge bg-black/40 text-white/70 border-white/15 backdrop-blur">${esc(featured.cat)}</span><span class="badge bg-black/40 text-emerald-200 border-emerald-300/20 backdrop-blur">${esc(featured.stage)} stage</span></div>
+            <div class="flex items-center gap-2 flex-wrap">${statusBadge(featured.status, true)}<span class="badge bg-black/40 text-white/70 border-white/15 backdrop-blur">${esc(featured.cat)}</span><span class="badge bg-black/40 text-emerald-200 border-emerald-300/20 backdrop-blur">${esc(featured.stage)} stage</span></div>
             <span class="hidden sm:flex items-center gap-1.5 text-[10px] text-white/65 font-mono">${icon('eye', 11)} ${nf(featured.viewers || 2400)} watching</span>
           </div>
           <div>
@@ -1501,6 +1720,7 @@ function filteredSchedule(){
   return state.events.filter(ev => {
     if(ui.myAgendaOnly && !state.registrations.includes(ev.id)) return false;
     if(ui.scheduleFilter !== 'all' && ev.status.toLowerCase() !== ui.scheduleFilter) return false;
+    if(ui.scheduleFormat !== 'all' && (ev.mode || 'Online') !== ui.scheduleFormat) return false;
     if(ui.scheduleCat !== 'all' && ev.cat !== ui.scheduleCat) return false;
     if(ui.scheduleQuery && !(ev.title + ' ' + ev.host + ' ' + ev.cat + ' ' + ev.stage).toLowerCase().includes(ui.scheduleQuery.toLowerCase())) return false;
     return true;
@@ -1535,12 +1755,13 @@ function agendaRow(ev){
           <div class="min-w-0 flex-1">
             <div class="flex items-center gap-1.5 flex-wrap mb-1">
               ${statusBadge(ev.status)}
+              ${modeBadge(ev, true)}
               <span class="inline-flex items-center gap-1 rounded border border-white/[.08] bg-white/[.03] px-1.5 py-0.5 text-[8px] text-[#a5bcb2]">${ev.emoji} ${esc(ev.cat)}</span>
               <span class="font-mono text-[7.5px] tracking-wide text-[#5f776d]">${esc(ev.stage)} STAGE</span>
               ${reg ? '<span class="badge badge-mint !text-[7px]">' + icon('check', 7) + ' In agenda</span>' : ''}
             </div>
             <p class="text-[11.5px] sm:text-[12.5px] font-semibold leading-tight truncate">${esc(ev.title)}</p>
-            <p class="text-[9px] sm:text-[9.5px] text-[#71897f] mt-1 truncate">${esc(ev.host)} · ends ${fmtMins((ev.mins || 0) + (ev.dur || 60))}</p>
+            <p class="text-[9px] sm:text-[9.5px] text-[#71897f] mt-1 truncate">${esc(ev.host)} · ends ${fmtMins((ev.mins || 0) + (ev.dur || 60))}${ev.mode === 'Hybrid' && ev.venue ? ` · ${esc(ev.venue)}` : ''}</p>
           </div>
           <div class="shrink-0 flex items-center gap-1.5">
             <button class="w-7 h-7 rounded-md border ${reg ? 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300' : 'border-white/10 text-[#71897f] hover:text-emerald-200 hover:border-emerald-400/25'} grid place-items-center transition" data-action="toggle-registration" data-id="${ev.id}" title="${reg ? 'Remove from my agenda' : 'Add to my agenda'}">${icon(reg ? 'check' : 'plus', 11)}</button>
@@ -1594,6 +1815,141 @@ function refreshScheduleContent(){
   if(count) count.textContent = `${filteredSchedule().length} session${filteredSchedule().length === 1 ? '' : 's'}`;
 }
 function refreshScheduleGrid(){ refreshScheduleContent(); }
+
+/* ---------- PUBLIC SCHEDULE (landing page, no sign-in) ---------- */
+function publicEventCard(ev, featured = false, order = 0){
+  const live = ev.status === 'Live';
+  const ended = ev.status === 'Ended';
+  return `<article class="public-event-card ${featured ? 'is-featured' : ''}" style="animation-delay:${order * 55}ms">
+    <div class="public-event-media">
+      <img src="${ev.img}" alt="${esc(ev.title)}" loading="lazy" class="public-event-image">
+      <div class="public-event-shade"></div>
+      <span class="public-event-status">${statusBadge(ev.status, true)}</span>
+      <span class="public-event-stage">${modeBadge(ev, true, true)}</span>
+      <span class="public-event-type">${ev.emoji} ${esc(ev.tag || ev.cat)}</span>
+    </div>
+    <div class="public-event-body">
+      <div>
+        <h4 class="public-event-title">${esc(ev.title)}</h4>
+        <p class="public-event-host">${esc(ev.host)}</p>
+        <div class="public-event-meta">
+          <span>${icon('clock', 10)} ${fmtMins(ev.mins)}</span>
+          ${ev.mode === 'Hybrid' && ev.venue ? `<span>${icon('pin', 10)} ${esc(ev.venue)}</span>` : `<span>${icon('globe', 10)} Stream only</span>`}
+          ${live && ev.viewers ? `<span>${icon('eye', 10)} ${nf(ev.viewers)}</span>` : ''}
+          ${ev.approval ? `<span class="text-amber-300">${icon('lock', 9)} approval</span>` : ''}
+        </div>
+      </div>
+      <div class="public-event-foot">
+        <button class="public-event-link" data-action="pub-details" data-id="${ev.id}">Peek at the set ${icon('arrowRight', 10)}</button>
+        <button class="btn ${live ? 'btn-primary' : 'btn-ghost'} h-8 px-3 text-[10px]" data-action="pub-join" data-id="${ev.id}">${ended ? 'Replay' : live ? 'Join live' : 'Get a pass'} ${icon('arrowRight', 10)}</button>
+      </div>
+    </div>
+  </article>`;
+}
+function renderPublicSchedule(){
+  const box = $('#this-season-inner');
+  if(!box) return;
+  const day = ui.publicDay || 'all';
+  const cat = ui.publicCat || 'all';
+  const fmt = ui.publicFormat || 'all';
+  const evs = state.events.filter(e => (cat === 'all' || e.cat === cat) && (fmt === 'all' || (e.mode || 'Online') === fmt));
+  const days = day === 'all' ? SCHEDULE_DAYS : SCHEDULE_DAYS.filter(d => String(d.n) === String(day));
+  const liveN = state.events.filter(e => e.status === 'Live').length;
+  const blocks = days.map(d => {
+    const list = evs.filter(e => (e.day || 3) === d.n).sort((a,b) => (a.mins||0) - (b.mins||0));
+    if(day === 'all' && !list.length) return '';
+    const featured = list.find(e => e.status === 'Live') || list.find(e => e.status === 'Upcoming') || list[0];
+    const rest = list.filter(e => e.id !== featured?.id);
+    const dayLive = list.filter(e => e.status === 'Live').length;
+    return `<section class="public-day-board">
+      <aside class="public-day-stamp">
+        <span class="public-day-kicker">Chapter 0${d.n}</span>
+        <span class="public-day-number">0${d.n}</span>
+        <span class="public-day-date">${esc(d.date)}</span>
+        <span class="public-day-theme">${esc(d.theme)}</span>
+        <span class="public-day-marker">${d.today ? 'On air today' : `${list.length} stages`}</span>
+      </aside>
+      <div class="public-day-content">
+        <div class="public-day-heading">
+          <span class="public-day-heading-label">The lineup</span>
+          <span class="public-day-heading-count">${list.length} SESSION${list.length === 1 ? '' : 'S'}${dayLive ? ` · <span class="text-red-300">${dayLive} LIVE</span>` : ''}</span>
+        </div>
+        <div class="public-event-grid">
+          ${featured ? publicEventCard(featured, true, 0) : '<div class="public-empty">The lineup for this day is coming together.</div>'}
+          ${rest.map((e,i) => publicEventCard(e, false, i+1)).join('')}
+        </div>
+      </div>
+    </section>`;
+  }).join('');
+  const visibleDays = days.filter(d => evs.some(e => (e.day || 3) === d.n));
+  const scheduleEmpty = !visibleDays.length;
+  const dayCounts = SCHEDULE_DAYS.map(d => ({...d, count:state.events.filter(e => (e.day || 3) === d.n).length}));
+  box.innerHTML = `
+    <div class="public-schedule-wrap">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-5 mb-7">
+        <div>
+          <div class="inline-flex items-center gap-2 mb-3 font-mono text-[9px] tracking-[.2em] uppercase text-emerald-300/80"><span class="live-dot"></span> Season 2026 <span class="text-white/25">/</span> Jan 16–18 <span class="text-white/25">/</span> ${liveN} on air</div>
+          <h2 class="font-display text-[30px] sm:text-[40px] font-semibold tracking-[-.045em] leading-[1.02]">A weekend in <span class="text-gradient">three chapters.</span></h2>
+          <p class="text-[12px] sm:text-[13px] text-[#93aaa0] mt-3 max-w-lg leading-relaxed">Pick a day. Find your kind of stage. The public lineup, no sign-in and no scroll through the fine print.</p>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <span class="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-white/[.08] bg-white/[.025] px-3 py-2 font-mono text-[8px] tracking-[.1em] text-[#82988e]">${icon('clock', 10)} LOCAL TIME · IST</span>
+          <button class="btn btn-primary h-9 px-4 text-[11px]" data-action="focus-auth">Get your pass ${icon('arrowRight', 11)}</button>
+        </div>
+      </div>
+
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-2">
+        <div class="public-schedule-rail">
+          <button class="chip ${day === 'all' ? 'active' : ''}" data-action="pub-day" data-day="all">Full weekend</button>
+          ${dayCounts.map(d => `<button class="chip ${String(day) === String(d.n) ? 'active' : ''}" data-action="pub-day" data-day="${d.n}"><span class="font-mono text-[9px] opacity-70">0${d.n}</span> ${d.date.split(', ')[0]} <span class="opacity-60">${d.date.split(', ')[1]}</span>${d.today ? '<span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>' : ''}</button>`).join('')}
+        </div>
+        <div class="public-schedule-rail pb-1">
+          <button class="chip ${fmt === 'all' ? 'active' : ''}" data-action="pub-format" data-format="all">Any format</button>
+          ${MODES.map(m => `<button class="chip ${fmt === m.key ? 'active' : ''}" data-action="pub-format" data-format="${m.key}">${icon(m.icon, 10)} ${m.key}</button>`).join('')}
+          <span class="w-px h-5 bg-white/10 mx-1 shrink-0"></span>
+          <button class="chip ${cat === 'all' ? 'active' : ''}" data-action="pub-cat" data-cat="all">All stages</button>
+          ${CATEGORIES.map(c => `<button class="chip ${cat === c ? 'active' : ''}" data-action="pub-cat" data-cat="${esc(c)}">${esc(c)}</button>`).join('')}
+        </div>
+      </div>
+      <div class="flex items-center justify-between border-b border-white/[.08] pb-2 mb-1">
+        <span class="font-mono text-[8px] tracking-[.18em] text-[#667f75]">THE PROGRAMME</span>
+        <span class="font-mono text-[8px] tracking-wide text-[#667f75]">${evs.length} STAGE${evs.length === 1 ? '' : 'S'} · ${state.events.reduce((n,e)=>n+(e.viewers||0),0) ? 'LIVE AUDIENCE' : 'OPEN DOORS'}</span>
+      </div>
+      ${scheduleEmpty ? `<div class="public-empty mt-5">No stages in this category for the selected day. Choose another day or category.</div>` : `<div>${blocks}</div>`}
+
+      <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-3 border-t border-white/[.08] pt-4">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <span class="w-8 h-8 rounded-lg bg-emerald-400/10 border border-emerald-400/20 grid place-items-center text-emerald-300">${icon('spark', 14)}</span>
+          <div><p class="text-[11.5px] font-semibold">The lineup is just the opening act.</p><p class="text-[10px] text-[#82988e] mt-0.5">Sign in to save your run of show, vote and take part.</p></div>
+        </div>
+        <div class="sm:ml-auto flex gap-2 shrink-0">
+          <button class="btn btn-ghost h-8 px-3 text-[10px]" data-action="agenda-ics">${icon('download', 11)} Calendar</button>
+          <button class="btn btn-primary h-8 px-3.5 text-[10px]" data-action="focus-auth">Enter the arena ${icon('arrowRight', 10)}</button>
+        </div>
+      </div>
+    </div>`;
+}
+function openPublicEventModal(id){
+  const ev = evById(id); if(!ev) return;
+  openModal(`
+    <div class="rounded-t-[18px] overflow-hidden relative h-[150px]">
+      <img src="${ev.img}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-60">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0b1512] via-[#0b1512]/40 to-transparent"></div>
+      <button class="absolute top-3 right-3 w-8 h-8 rounded-lg bg-black/45 backdrop-blur border border-white/15 grid place-items-center text-white/80 hover:text-white" data-action="close-modal">${icon('x', 16)}</button>
+      <div class="absolute bottom-3 left-4 flex items-center gap-1.5 flex-wrap">${statusBadge(ev.status, true)}${modeBadge(ev, false, true)}<span class="badge bg-black/40 text-white/75 border-white/15">${esc(ev.cat)}</span></div>
+    </div>
+    <div class="p-5">
+      <h2 class="font-display text-[22px] font-semibold tracking-tight leading-tight">${esc(ev.title)}</h2>
+      <p class="text-[11px] text-[#8ba39a] mt-1">${esc(ev.host)} · ${(SCHEDULE_DAYS.find(d => d.n === ev.day) || {}).date || ''} · ${fmtMins(ev.mins)}</p>
+      <p class="text-[10px] mt-2 flex items-center gap-1.5 ${ev.mode === 'Hybrid' ? 'text-amber-300' : 'text-cyan-300'}">${icon(ev.mode === 'Hybrid' ? 'users' : 'globe', 11)} ${ev.mode === 'Hybrid' ? `Hybrid · ${esc(ev.venue || 'campus venue')} + live stream` : 'Fully online · stream from anywhere'}</p>
+      <p class="text-[12px] text-[#a5bcb2] leading-relaxed mt-3">${esc(ev.desc)}</p>
+      <div class="mt-4 rounded-xl border border-white/[.08] bg-white/[.02] p-3 text-[10.5px] ${ev.approval ? 'text-amber-300' : 'text-emerald-300'} flex items-center gap-1.5">${icon(ev.approval ? 'lock' : 'check', 12)} ${ev.approval ? 'Premium stage — pass holders can request access' : 'Open stage — anyone signed in (even guests) can join'}</div>
+      <div class="mt-4 flex gap-2">
+        <button class="btn btn-primary h-9 px-4 text-[11.5px]" data-action="pub-join" data-id="${ev.id}">Sign in to join ${icon('arrowRight', 11)}</button>
+        <button class="btn btn-ghost h-9 px-3 text-[11px]" data-action="close-modal">Keep browsing</button>
+      </div>
+    </div>`);
+}
 function renderSchedule(){
   const myReqs = state.requests.filter(r => state.session && (r.email === state.session.email || r.handle === state.session.nickname));
   const accessChips = [
@@ -1633,6 +1989,9 @@ function renderSchedule(){
       <div class="flex items-center gap-1.5 overflow-x-auto rail pb-1">
         ${scheduleFilters().map(([k,l]) => `<button class="chip ${ui.scheduleFilter===k?'active':''}" data-action="schedule-filter" data-filter="${k}">${l === 'Live now' ? '<span class="live-dot" style="width:5px;height:5px"></span>' : ''}${l}</button>`).join('')}
         <span class="w-px h-5 bg-white/10 mx-1.5 shrink-0"></span>
+        <button class="chip ${ui.scheduleFormat==='all'?'active':''}" data-action="schedule-format" data-format="all">Any format</button>
+        ${MODES.map(m => `<button class="chip ${ui.scheduleFormat===m.key?'active':''}" data-action="schedule-format" data-format="${m.key}">${icon(m.icon, 10)} ${m.key}</button>`).join('')}
+        <span class="w-px h-5 bg-white/10 mx-1.5 shrink-0"></span>
         <button class="chip ${ui.scheduleCat==='all'?'active':''}" data-action="schedule-cat" data-cat="all">Everything</button>
         ${CATEGORIES.map(c => `<button class="chip ${ui.scheduleCat===c?'active':''}" data-action="schedule-cat" data-cat="${esc(c)}">${esc(c)}</button>`).join('')}
       </div>
@@ -1662,12 +2021,15 @@ function renderSchedule(){
 /* ---------- LIVE STAGE ---------- */
 function chatMessageHtml(m){
   const isMe = state.session && m.name === state.session.nickname && m.role === state.session.role;
-  return `<div class="flex items-start gap-2 ${isMe ? 'rounded-lg bg-emerald-400/[.055] border border-emerald-400/10 p-2 -mx-1' : ''}">
+  const muted = isMuted(m.name);
+  const canModerate = isOrganizer() && m.role !== 'organizer';
+  return `<div class="chat-line group flex items-start gap-2 ${muted ? 'muted-row' : ''} ${isMe ? 'rounded-lg bg-emerald-400/[.055] border border-emerald-400/10 p-2 -mx-1' : ''}">
     ${avatar(m.name, 24, m.role === 'guest' ? 266 : m.role === 'organizer' ? 36 : (m.name.charCodeAt(0)*7)%360)}
-    <div class="min-w-0">
-      <div class="flex items-center gap-1.5 flex-wrap">${handleTag(m.role, m.name)}${isMe ? '<span class="text-[8px] font-mono text-emerald-300/70">YOU</span>' : ''}</div>
+    <div class="min-w-0 flex-1">
+      <div class="flex items-center gap-1.5 flex-wrap">${handleTag(m.role, m.name)}${isMe ? '<span class="text-[8px] font-mono text-emerald-300/70">YOU</span>' : ''}${muted ? `<span class="muted-flag">${icon('x', 7)} restricted</span>` : ''}</div>
       <p class="text-[11px] text-[#c7dbd2] leading-snug mt-0.5 break-words">${esc(m.text)}</p>
     </div>
+    ${canModerate ? `<button class="mod-btn shrink-0 ${muted ? 'is-muted' : ''}" data-action="toggle-mute" data-handle="${esc(m.name)}" data-role="${esc(m.role)}" title="${muted ? 'Lift restriction on ' + esc(m.name) : 'Restrict ' + esc(m.name) + ' from posting'}">${icon(muted ? 'check' : 'x', 11)}</button>` : ''}
   </div>`;
 }
 function chatStreamHtml(){ return state.chat.slice(-40).map(chatMessageHtml).join(''); }
@@ -1713,11 +2075,17 @@ function livePanelHtml(ev){
   if(livePanelTab === 'poll') return `<div class="flex flex-col min-h-0 flex-1">
     <div class="overflow-y-auto chat-scroll flex-1 pr-1">${livePollsHtml(ev)}</div>
     <p class="text-[8.5px] text-[#5f776d] mt-2 flex items-center gap-1">${icon('shield', 9)} Results update live · one vote per viewer</p></div>`;
+  if(amIMuted()) return `<div class="flex flex-col min-h-0 flex-1">
+    <div id="chat-stream" class="flex-1 overflow-y-auto chat-scroll space-y-2.5 pr-1 mb-2.5">${chatStreamHtml()}</div>
+    <div class="rounded-xl border border-red-400/25 bg-red-400/[.07] p-3 text-center">
+      <p class="text-[11px] font-semibold text-red-200">${icon('lock', 11)} You're in read-only mode</p>
+      <p class="text-[9.5px] text-[#a08b8b] mt-1 leading-relaxed">A moderator restricted posting for your handle. You can keep watching and voting.</p>
+    </div></div>`;
   return `<div class="flex flex-col min-h-0 flex-1">
     <div id="chat-stream" class="flex-1 overflow-y-auto chat-scroll space-y-2.5 pr-1 mb-2.5">${chatStreamHtml()}</div>
     <form id="chat-form">
       <div class="flex gap-1.5"><input id="chat-input" class="field !py-2 !text-[11px]" placeholder="Add to the room…" maxlength="140" autocomplete="off"><button class="btn btn-primary !py-2 px-2.5 shrink-0">${icon('send', 12)}</button></div>
-      <p class="text-[8.5px] text-[#5f776d] mt-1">Posting as ${myTag()}</p>
+      <p class="text-[8.5px] text-[#5f776d] mt-1">Posting as ${myTag()}${isOrganizer() ? ' · hover a message to restrict a commenter' : ''}</p>
     </form></div>`;
 }
 function renderLive(){
@@ -2088,6 +2456,26 @@ function renderOrganizer(){
           </div>
         </div>
 
+        <div class="rounded-2xl border border-white/[.09] bg-[#0a1311] p-4">
+          <div class="flex items-center justify-between mb-1"><h3 class="text-[12.5px] font-semibold flex items-center gap-1.5">${icon('shield', 14, 'text-red-300')} Chat moderation</h3><span class="badge ${state.muted.length ? 'badge-live' : 'badge-mint'}">${state.muted.length} restricted</span></div>
+          <p class="text-[10px] text-[#71897f] mb-3">Hover any message in the live room to restrict a commenter. Restricted handles stay read-only across chat and Q&amp;A.</p>
+          <form id="mute-form" class="flex gap-1.5 mb-3">
+            <input id="mute-handle" class="field !py-2 !text-[11px]" placeholder="Restrict a handle…" maxlength="24">
+            <button class="btn btn-ghost !py-2 px-2.5 text-[10px] shrink-0">${icon('x', 11)} Restrict</button>
+          </form>
+          ${state.muted.length ? `<div class="space-y-1.5 mb-3">
+            ${state.muted.map(m => `<div class="flex items-center gap-2 rounded-lg border border-red-400/20 bg-red-400/[.05] px-2.5 py-1.5">
+              <span class="muted-flag shrink-0">${icon('lock', 7)} muted</span>
+              <div class="min-w-0 flex-1"><p class="text-[10.5px] font-semibold truncate">${esc(m.handle)}</p><p class="text-[8.5px] text-[#8ba39a] truncate">${esc(m.reason)} · by ${esc(m.by)}</p></div>
+              <button class="text-[9.5px] text-emerald-300 hover:text-emerald-200 shrink-0" data-action="unmute" data-handle="${esc(m.handle)}" data-role="${esc(m.role)}">Restore</button>
+            </div>`).join('')}
+          </div>` : `<p class="text-[10px] text-[#5f776d] mb-3 flex items-center gap-1.5">${icon('check', 10)} No restrictions active — the room is clean.</p>`}
+          ${state.modLog.length ? `<div class="pt-2.5 border-t border-white/[.06]">
+            <p class="font-mono text-[8px] tracking-[.16em] text-[#5f776d] mb-1.5">MODERATION LOG</p>
+            <div class="space-y-1">${state.modLog.slice(0,4).map(l => `<div class="flex items-center gap-1.5 text-[9px]"><span class="${l.action === 'restricted' ? 'text-red-300' : 'text-emerald-300'}">${icon(l.action === 'restricted' ? 'x' : 'check', 8)}</span><span class="text-[#c7dbd2] truncate">${esc(l.handle)}</span><span class="text-[#5f776d] truncate">${esc(l.action)} · ${esc(l.time)}</span></div>`).join('')}</div>
+          </div>` : ''}
+        </div>
+
         <div class="rounded-2xl border border-white/[.08] bg-white/[.02] p-3.5 flex items-start gap-2.5">
           <span class="text-emerald-300 shrink-0 mt-0.5">${icon('shield', 14)}</span>
           <div><p class="text-[10.5px] font-semibold">Guest handles are protected</p><p class="text-[9.5px] text-[#71897f] mt-0.5 leading-snug">Guests post as [GUEST] Name. Approve their requests to give stage access without exposing real names.</p></div>
@@ -2109,11 +2497,15 @@ function openEventModal(id){
       <img src="${ev.img}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-60">
       <div class="absolute inset-0 bg-gradient-to-t from-[#0b1512] via-[#0b1512]/40 to-transparent"></div>
       <button class="absolute top-3 right-3 w-8 h-8 rounded-lg bg-black/45 backdrop-blur border border-white/15 grid place-items-center text-white/80 hover:text-white" data-action="close-modal">${icon('x', 16)}</button>
-      <div class="absolute bottom-3 left-4 right-4 flex items-end justify-between gap-2"><div class="flex items-center gap-1.5 flex-wrap">${statusBadge(ev.status)}<span class="badge bg-black/40 text-white/75 border-white/15 backdrop-blur">${esc(ev.cat)}</span><span class="badge bg-black/40 text-emerald-200 border-emerald-300/20 backdrop-blur">${esc(ev.stage)} stage</span></div><span class="text-[9.5px] text-white/65 font-mono">${nf(ev.viewers||0)} inside</span></div>
+      <div class="absolute bottom-3 left-4 right-4 flex items-end justify-between gap-2"><div class="flex items-center gap-1.5 flex-wrap">${statusBadge(ev.status, true)}${modeBadge(ev, false, true)}<span class="badge bg-black/40 text-white/75 border-white/15 backdrop-blur">${esc(ev.cat)}</span><span class="badge bg-black/40 text-emerald-200 border-emerald-300/20 backdrop-blur">${esc(ev.stage)} stage</span></div><span class="text-[9.5px] text-white/65 font-mono">${nf(ev.viewers||0)} inside</span></div>
     </div>
     <div class="p-5">
       <h2 class="font-display text-[22px] font-semibold tracking-tight leading-tight">${esc(ev.title)}</h2>
       <p class="text-[11px] text-[#8ba39a] mt-1">${esc(ev.host)} · ${esc(ev.time)}</p>
+      <div class="mt-3 flex items-start gap-2 rounded-lg border border-white/[.08] bg-white/[.02] p-2.5">
+        <span class="${ev.mode === 'Hybrid' ? 'text-amber-300' : 'text-cyan-300'} shrink-0 mt-0.5">${icon(ev.mode === 'Hybrid' ? 'users' : 'globe', 13)}</span>
+        <div><p class="text-[10.5px] font-semibold">${ev.mode === 'Hybrid' ? 'Hybrid event' : 'Fully online'}</p><p class="text-[9.5px] text-[#8ba39a] mt-0.5 leading-snug">${ev.mode === 'Hybrid' ? `In person at ${esc(ev.venue || 'the campus venue')}, with a synced live stream for remote viewers.` : 'Streamed end to end — join from anywhere with your pass.'}</p></div>
+      </div>
       <p class="text-[11.5px] text-[#a5bcb2] leading-relaxed mt-3">${esc(ev.desc)}</p>
       <div class="mt-4 rounded-xl border border-white/[.08] bg-white/[.02] p-3">
         <div class="flex items-center justify-between gap-2 flex-wrap">
@@ -2187,6 +2579,16 @@ function openNewEventModal(){
         <div><label class="text-[10.5px] text-[#a5bcb2]">Stage</label><select id="new-event-stage" class="field mt-1"><option>MAIN</option><option>ARENA</option><option>LOUNGE</option><option>LAB</option></select></div>
       </div>
       <div><label class="text-[10.5px] text-[#a5bcb2]">Host</label><input id="new-event-host" class="field mt-1" placeholder="Host or crew" value="RealStream Season 26"></div>
+      <div>
+        <label class="text-[10.5px] text-[#a5bcb2]">Format</label>
+        <div class="grid grid-cols-2 gap-2 mt-1.5">
+          ${MODES.map((m,i) => `<label class="flex items-start gap-2 p-2.5 rounded-lg border border-white/10 bg-white/[.03] cursor-pointer hover:border-white/20 transition">
+            <input type="radio" name="new-event-mode" value="${m.key}" ${i === 0 ? 'checked' : ''} class="mt-0.5 accent-emerald-400">
+            <span><span class="block text-[11px] font-medium">${m.label}</span><span class="block text-[9px] text-[#71897f] mt-0.5 leading-snug">${m.blurb}</span></span>
+          </label>`).join('')}
+        </div>
+      </div>
+      <div id="new-event-venue-wrap" class="hidden"><label class="text-[10.5px] text-[#a5bcb2]">Campus venue</label><input id="new-event-venue" class="field mt-1" placeholder="e.g. Open Air Theatre"></div>
       <div class="grid grid-cols-2 gap-2.5">
         <div><label class="text-[10.5px] text-[#a5bcb2]">Schedule day <span class="text-[#5f776d]">(general schedule)</span></label><select id="new-event-day" class="field mt-1">${SCHEDULE_DAYS.map(d => `<option value="${d.n}" ${d.n === 3 ? 'selected' : ''}>${d.label} · ${d.date}</option>`).join('')}</select></div>
         <div><label class="text-[10.5px] text-[#a5bcb2]">Start time</label><select id="new-event-mins" class="field mt-1">${[[600,'10:00 AM'],[690,'11:30 AM'],[780,'1:00 PM'],[840,'2:00 PM'],[960,'4:00 PM'],[1020,'5:00 PM'],[1080,'6:00 PM'],[1140,'7:00 PM'],[1200,'8:00 PM']].map(([m,l]) => `<option value="${m}" ${m === 1080 ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
@@ -2252,7 +2654,17 @@ function executeAction(action, el){
   switch(action){
     case 'toggle-theme': toggleTheme(); break;
     case 'auth-tab': authTab(el.dataset.tab); break;
-    case 'focus-auth': { const c = $('#auth-card'); if(c) c.scrollIntoView({ behavior:'smooth', block:'center' }); setTimeout(()=>$('#email-input')&&$('#email-input').focus(), 350); break; }
+    case 'focus-auth': closeModal(); focusAuthCard(); break;
+    case 'pub-day': ui.publicDay = el.dataset.day; renderPublicSchedule(); break;
+    case 'pub-cat': ui.publicCat = el.dataset.cat; renderPublicSchedule(); break;
+    case 'pub-format': ui.publicFormat = el.dataset.format; renderPublicSchedule(); break;
+    case 'schedule-format': ui.scheduleFormat = el.dataset.format; renderView(); break;
+    case 'toggle-mute': toggleMute(el.dataset.handle, el.dataset.role); break;
+    case 'unmute': toggleMute(el.dataset.handle, el.dataset.role); break;
+    case 'pub-details': openPublicEventModal(id); break;
+    case 'pub-join': { const ev = evById(id); closeModal(); ui.pendingView = (ev && ev.status !== 'Upcoming') ? 'live' : 'schedule'; if(ev) ui.liveEvent = id; focusAuthCard(); toast(`Sign in or join as a guest to enter ${ev ? esc(ev.title) : 'this stage'}.`, 'info', 'Almost there'); break; }
+    case 'nav-season': ui.pendingView='schedule'; focusAuthCard(); toast('Sign in to open the full Season 2026 schedule.', 'info', 'This season'); break;
+    case 'nav-organizers': ui.pendingView='organizer'; focusAuthCard(); toast('Organizers sign in with a workspace email — or use the Organizer demo button below.', 'info', 'For organizers'); break;
     case 'open-google': openGoogleModal(); break;
     case 'google-other': openOtherAccount(); break;
     case 'fill-demo-pass': if($('#pass-name')) $('#pass-name').value = 'Aarav Mehta'; if($('#ticket-input')) $('#ticket-input').value = 'RS26-4X7K-9021'; if($('#verify-input')) $('#verify-input').value = '4821'; toast('Sample pass loaded. Hit “Unlock my events”.', 'info', 'Pass ready'); break;
@@ -2283,7 +2695,7 @@ function executeAction(action, el){
     case 'request-access': { const ev = evById(id); if(!ev) break; const note = $('#request-note') ? $('#request-note').value.trim() : ''; requestAccess(ev, note); break; }
     case 'schedule-filter': ui.scheduleFilter = el.dataset.filter; renderView(); break;
     case 'schedule-cat': ui.scheduleCat = el.dataset.cat; renderView(); break;
-    case 'schedule-reset': ui.scheduleFilter = 'all'; ui.scheduleCat = 'all'; ui.scheduleQuery = ''; ui.myAgendaOnly = false; renderView(); break;
+    case 'schedule-reset': ui.scheduleFilter = 'all'; ui.scheduleCat = 'all'; ui.scheduleFormat = 'all'; ui.scheduleQuery = ''; ui.myAgendaOnly = false; renderView(); break;
     case 'schedule-mode': ui.scheduleMode = el.dataset.mode; renderView(); break;
     case 'day-filter': ui.scheduleDay = el.dataset.day; renderView(); break;
     case 'toggle-my-agenda': ui.myAgendaOnly = !ui.myAgendaOnly; if(ui.myAgendaOnly) ui.scheduleDay = 'all'; renderView(); toast(ui.myAgendaOnly ? 'Showing only the sessions you saved.' : 'Showing the full general schedule.', 'info', ui.myAgendaOnly ? 'My agenda' : 'All sessions'); break;
@@ -2398,6 +2810,7 @@ function submitChat(){
   if(!input) return;
   const val = input.value.trim();
   if(!val) return;
+  if(amIMuted()){ toast('A moderator restricted posting for your handle.', 'error', 'Read-only mode'); input.value = ''; return; }
   const s = sock();
   input.value = '';
   addChatMessage(s.nickname, s.role, val, true);
@@ -2406,6 +2819,7 @@ function submitQA(){
   const input = $('#qa-global-input') || $('#live-qa-input');
   if(!input) return;
   const val = input.value.trim();
+  if(amIMuted()){ toast('A moderator restricted posting for your handle.', 'error', 'Read-only mode'); input.value = ''; return; }
   if(val.length < 6){ toast('Add a little more detail so the speaker can answer well.', 'error', 'Question too short'); return; }
   const ev = evById(ui.liveEvent) || state.events[1];
   const s = sock();
@@ -2478,7 +2892,10 @@ function icsEscape(s){
   return String(s || '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
 }
 function downloadAgenda(){
-  const list = filteredSchedule().slice().sort((a,b) => ((a.day || 3) - (b.day || 3)) || ((a.mins || 0) - (b.mins || 0)));
+  const source = state.session
+    ? filteredSchedule()
+    : state.events.filter(e => (ui.publicDay === 'all' || String(e.day || 3) === String(ui.publicDay)) && (ui.publicCat === 'all' || e.cat === ui.publicCat));
+  const list = source.slice().sort((a,b) => ((a.day || 3) - (b.day || 3)) || ((a.mins || 0) - (b.mins || 0)));
   if(!list.length){ toast('Nothing on this filtered agenda yet.', 'error', 'Empty agenda'); return; }
   const pad = n => String(n).padStart(2, '0');
   const now = new Date();
@@ -2587,7 +3004,7 @@ document.addEventListener('click', e => {
 });
 document.addEventListener('submit', e => {
   const id = e.target.id;
-  if(!['email-form','pass-form','other-account-form','new-event-form','broadcast-form','qa-global-form','live-qa-form','chat-form','org-cert-form','issue-cert-form','claim-cert-form'].includes(id)) return;
+  if(!['email-form','pass-form','other-account-form','new-event-form','broadcast-form','qa-global-form','live-qa-form','chat-form','org-cert-form','issue-cert-form','claim-cert-form','mute-form'].includes(id)) return;
   e.preventDefault();
   if(id === 'email-form') signInEmail();
   if(id === 'pass-form') signInPass();
@@ -2605,6 +3022,12 @@ document.addEventListener('submit', e => {
   if(id === 'org-cert-form') submitOrgCert();
   if(id === 'issue-cert-form') issueCertFromStudio();
   if(id === 'claim-cert-form') generateClaimCert();
+  if(id === 'mute-form'){
+    const h = ($('#mute-handle').value || '').trim().replace(/^@+/, '');
+    if(h.length < 2){ toast('Enter the handle you want to restrict.', 'error'); return; }
+    if(isMuted(h)){ toast(`${h} is already restricted.`, 'info'); return; }
+    toggleMute(h, 'attendee', 'Manually restricted by host');
+  }
 });
 document.addEventListener('input', e => {
   if(e.target.id === 'schedule-query'){ ui.scheduleQuery = e.target.value; refreshScheduleGrid(); }
@@ -2681,3 +3104,4 @@ init();
 </script>
 </body>
 </html>
+
